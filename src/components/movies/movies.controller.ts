@@ -1,25 +1,22 @@
 import { RouteHandler } from 'fastify';
 import { fetchMovie, fetchMoviesBySearch } from './movies.service';
 
-import { IGetMovieQry, IGetMoviesBySearchQry } from '../../types';
+import { IGetMoviesBySearchQry } from '../../types';
 
-const getMovie: RouteHandler<{ Body: IGetMovieQry }> = async (req, res) => {
+const getMovie: RouteHandler<{ Querystring: { id: string } }> = async (
+  req,
+  res
+) => {
   try {
-    const { paramOption, paramValue, otherParams } = req.body;
+    const { id } = req.query;
 
-    if (!paramOption) {
-      return res.status(400).send({ error: 'Missing paramOption' });
+    console.log('id', id);
+
+    if (!id) {
+      return res.status(400).send({ error: 'Missing movie id' });
     }
 
-    if (!paramValue) {
-      return res.status(400).send({ error: 'Missing paramValue' });
-    }
-
-    const movie = await fetchMovie({
-      paramOption,
-      paramValue,
-      otherParams,
-    });
+    const movie = await fetchMovie(id);
 
     res.send(movie);
   } catch (error) {
@@ -46,7 +43,7 @@ const getMoviesBySearch: RouteHandler<{ Body: IGetMoviesBySearchQry }> = async (
 
     res.send(movies);
   } catch (error) {
-    res.status(500).send({ error: 'Failed to fetch movies' });
+    res.status(500).send({ error: 'Failed to fetch list of movies' });
   }
 };
 

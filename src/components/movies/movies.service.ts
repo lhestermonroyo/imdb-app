@@ -1,22 +1,15 @@
 import axios from 'axios';
 import env from '../../config/env';
 
-import { IGetMovieQry, IGetMoviesBySearchQry } from '../../types';
+import { IGetMoviesBySearchQry } from '../../types';
 
 const API_URL = 'http://www.omdbapi.com/';
 
-const fetchMovie = async ({
-  paramOption,
-  paramValue,
-  otherParams,
-}: IGetMovieQry) => {
+const fetchMovie = async (id: string) => {
   const response = await axios.get(API_URL, {
     params: {
       apikey: env.imdbApiKey,
-      [paramOption]: paramValue,
-      type: otherParams?.type,
-      y: otherParams?.year,
-      plot: otherParams?.plot || 'short',
+      i: id,
     },
   });
 
