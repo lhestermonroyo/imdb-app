@@ -1,0 +1,26 @@
+{
+  "name": "imdb-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts",
+    "dev": "nodemon --exec ts-node index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.2",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "nodemon": "^3.1.9"
+  }
+}
