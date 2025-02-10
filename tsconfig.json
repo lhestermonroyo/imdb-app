@@ -1,5 +1,7 @@
 {
+  "include": ["src/**/*.ts", "index.d.ts"],
   "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
