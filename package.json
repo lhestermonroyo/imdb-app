@@ -4,8 +4,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts",
-    "dev": "nodemon --exec ts-node index.ts"
+    "start:backend": "nodemon --exec ts-node index.ts",
+    "start:frontend": "cd client && npm run dev",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@fastify/cors": "^10.0.2",
     "axios": "^1.7.9",
+    "concurrently": "^9.1.2",
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
     "nodemon": "^3.1.9"
