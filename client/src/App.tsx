@@ -13,7 +13,8 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import logo from './assets/logo.png';
-import SearchEmpty from './components/search-empty';
+import SearchEmpty from './components/search-start';
+import { notifications } from '@mantine/notifications';
 
 const API_URL = `http://[::1]:3000/api/movies`;
 
@@ -32,9 +33,26 @@ const App: FC = () => {
 
   const handleSubmit = async (values: typeof form.values) => {
     try {
-      // TODO: Implement search functionality
+      const response = await fetch(`${API_URL}/search`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: values.search }),
+      });
+      const data = await response.json();
+
+      if (data) {
+        setResults(data.Search);
+      }
     } catch (error) {
       console.log('error:', error);
+      notifications.show({
+        title: 'Error',
+        message: 'Failed to fetch movies',
+        color: 'red',
+        position: 'top-center',
+      });
     }
   };
 

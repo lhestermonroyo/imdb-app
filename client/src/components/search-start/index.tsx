@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { Box, Center, Image, Stack, Text } from '@mantine/core';
 
-import empty from '../../assets/empty.png';
+import start from '../../assets/empty.png';
 
-const SearchEmpty: FC = () => {
+const SearchStart: FC = () => {
   return (
     <Box pt={64} flex={1}>
       <Stack gap={6} flex={1} h="100%" justify="center" align="center">
         <Center>
-          <Image src={empty} h={200} alt="logo" />
+          <Image src={start} h={200} alt="logo" />
         </Center>
         <Text size="xl" fw="bold">
           Search your movie
@@ -21,4 +21,4 @@ const SearchEmpty: FC = () => {
   );
 };
 
-export default SearchEmpty;
+export default SearchStart;
