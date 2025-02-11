@@ -5,7 +5,7 @@ type OtherParams = {
 };
 
 export interface IGetMoviesBySearchQry {
-  search: string;
+  query: string;
   page?: number;
   otherParams?: OtherParams;
 }

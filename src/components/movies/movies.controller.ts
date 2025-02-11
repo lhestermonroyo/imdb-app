@@ -10,8 +10,6 @@ const getMovie: RouteHandler<{ Querystring: { id: string } }> = async (
   try {
     const { id } = req.query;
 
-    console.log('id', id);
-
     if (!id) {
       return res.status(400).send({ error: 'Missing movie id' });
     }
@@ -29,14 +27,14 @@ const getMoviesBySearch: RouteHandler<{ Body: IGetMoviesBySearchQry }> = async (
   res
 ) => {
   try {
-    const { search, page, otherParams } = req.body;
+    const { query, page, otherParams } = req.body;
 
-    if (!search) {
-      return res.status(400).send({ error: 'Missing search' });
+    if (!query) {
+      return res.status(400).send({ error: 'Missing query' });
     }
 
     const movies = await fetchMoviesBySearch({
-      search,
+      query,
       page,
       otherParams,
     });

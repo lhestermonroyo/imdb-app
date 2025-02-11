@@ -9,7 +9,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 
 const theme = createTheme({
-  defaultRadius: 'md',
+  defaultRadius: 6,
   primaryColor: 'yellow',
 });
 

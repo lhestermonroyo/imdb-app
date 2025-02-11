@@ -17,14 +17,14 @@ const fetchMovie = async (id: string) => {
 };
 
 const fetchMoviesBySearch = async ({
-  search,
+  query,
   page = 1,
   otherParams,
 }: IGetMoviesBySearchQry) => {
   const response = await axios.get(API_URL, {
     params: {
       apikey: env.imdbApiKey,
-      s: search,
+      s: query,
       page,
       type: otherParams?.type,
       y: otherParams?.year,
